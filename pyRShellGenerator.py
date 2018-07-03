@@ -13,6 +13,6 @@ def main(ip, port):
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
-        print 'Usage: ./pyRShellGenerator.py *IP* *PORT*'
+        print('Usage: ./pyRShellGenerator.py *IP* *PORT*')
         exit()
     main(sys.argv[1], sys.argv[2])
