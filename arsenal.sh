@@ -51,7 +51,7 @@ git clone https://github.com/jaagr/polybar.git
 mv polybar/ /tmp/
 cd /tmp/polybar
 ./build.sh
-cd ~/Documents
+cd ~/tools
 
 echo "[!] Need to Fix Polybar"
 echo "Run 'xrandr --listmonitors' and get the monitor name"
@@ -80,3 +80,40 @@ apt install -y nitrogen
 
 echo "[+] Install Neofetch"
 apt install -y neofetch
+
+echo "[-] Remove Terminator"
+# Kali includes terminator by default and I hate it
+apt remove -y terminator
+
+echo "[+] Install i3-gaps"
+apt install -y libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb \
+    libxcb1-dev libxcb-icccm4-dev libyajl-dev libev-dev libxcb-xkb-dev \
+    libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev \
+    libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev \
+    libxcb-xrm0 libxcb-xrm-dev autoconf
+cd /tmp
+git clone https://www.github.com/Airblader/i3 i3-gaps
+cd /tmp/i3-gaps
+autoreconf --force --install
+rm -rf /tmp/i3-gaps/build
+mkdir -p /tmp/i3-gaps/build
+cd /tmp/i3-gaps/build
+../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+make
+make install
+cd ~/tools
+
+echo "[+] Install Scrot"
+apt install -y scrot
+
+echo "[+] Install feh"
+apt install -y feh
+
+echo "[+] Install dunst"
+apt install -y dunst
+
+echo "[+] Install xautolock"
+apt install -y xautolock
+
+echo "[+] Install compton"
+apt install -y compton
