@@ -117,3 +117,16 @@ apt install -y xautolock
 
 echo "[+] Install compton"
 apt install -y compton
+
+echo "[+] Install docker"
+apt install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee -a /etc/apt/sources.list.d/docker.list
+apt update
+apt install -y docker-ce
+
+echo "[+] Install aws cli"
+pip3 install --upgrade awscli
+
+echo "[+] Install ScoutSuite"
+pip3 install scoutsuite

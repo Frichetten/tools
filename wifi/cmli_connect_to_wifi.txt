@@ -1,0 +1,5 @@
+# List wifi networks
+nmcli d wifi list
+
+# Connect to network
+nmcli dev wifi connect *ssid* -a
