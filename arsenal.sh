@@ -130,3 +130,9 @@ pip3 install --upgrade awscli
 
 echo "[+] Install ScoutSuite"
 pip3 install scoutsuite
+
+echo "[+] Install dirsearch"
+mkdir ~/scripts
+cd ~/scripts
+git clone https://github.com/maurosoria/dirsearch.git
+cd ~/tools
