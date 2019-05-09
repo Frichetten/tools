@@ -136,3 +136,10 @@ mkdir ~/scripts
 cd ~/scripts
 git clone https://github.com/maurosoria/dirsearch.git
 cd ~/tools
+
+echo "[+] Install pacu"
+cd ~/scripts
+git clone https://github.com/RhinoSecurityLabs/pacu.git
+cd ~/scripts/pacu
+bash install.sh
+cd ~/tools
