@@ -2,7 +2,7 @@
 # Author: Nick Frichette
 # Intended OS: Kali Linux/Debian
 # Description: A quick script to install some tools after 
-#     the OS has been flashed.
+# the OS has been flashed.
 
 # Root check
 if [ $EUID != 0 ]; then
@@ -36,10 +36,10 @@ echo "[+] Installing i3wm"
 apt install -y i3
 
 echo "[+] Downloading Personal Configs"
-wget https://github.com/Frichetten/dotfiles/archive/master.zip -O /tmp/dotfiles.zip
-unzip /tmp/dotfiles.zip -d /tmp
-cp -r /tmp/dotfiles-master/* ~/.config/
-rm ~/.config/README.md
+#wget https://github.com/Frichetten/dotfiles/archive/master.zip -O /tmp/dotfiles.zip
+#unzip /tmp/dotfiles.zip -d /tmp
+#cp -r /tmp/dotfiles-master/* ~/.config/
+#rm ~/.config/README.md
 
 echo "[+] Install Polybar"
 apt install -y cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev \
@@ -51,20 +51,20 @@ git clone https://github.com/jaagr/polybar.git
 mv polybar/ /tmp/
 cd /tmp/polybar
 ./build.sh
-cd ~/tools
+cd /home/nick/tools
 
 echo "[!] Need to Fix Polybar"
-echo "Run 'xrandr --listmonitors' and get the monitor name"
-echo "of the monitor you'd like to use. Replace this in the"
-echo "Polybar config at ~/.config/polybar/config"
-read -p "[?] Are you done? [Y/n]: " answer
-if [ $answer != "Y" ]; then
-    echo "[!] Did not answer yes. Exiting."
-fi
+#echo "Run 'xrandr --listmonitors' and get the monitor name"
+#echo "of the monitor you'd like to use. Replace this in the"
+#echo "Polybar config at ~/.config/polybar/config"
+#read -p "[?] Are you done? [Y/n]: " answer
+#if [ $answer != "Y" ]; then
+#    echo "[!] Did not answer yes. Exiting."
+#fi
 
 echo "[+] Install PyWal"
 pip3 install --user pywal
-echo 'PATH="${PATH}:${HOME}/.local/bin"' >> ~/.bashrc
+echo 'PATH="${PATH}:${HOME}/.local/bin"' >> /home/nick/.bashrc
 
 echo "[+] Install Ranger"
 apt install -y ranger
@@ -101,7 +101,7 @@ cd /tmp/i3-gaps/build
 ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
 make
 make install
-cd ~/tools
+cd /home/nick/tools
 
 echo "[+] Install Scrot"
 apt install -y scrot
@@ -132,14 +132,23 @@ echo "[+] Install ScoutSuite"
 pip3 install scoutsuite
 
 echo "[+] Install dirsearch"
-mkdir ~/scripts
-cd ~/scripts
+mkdir /home/nick/scripts
+cd /home/nick/scripts
 git clone https://github.com/maurosoria/dirsearch.git
-cd ~/tools
+cd /home/nick/tools
 
 echo "[+] Install pacu"
-cd ~/scripts
+cd /home/nick/scripts
 git clone https://github.com/RhinoSecurityLabs/pacu.git
-cd ~/scripts/pacu
+cd /home/nick/scripts/pacu
 bash install.sh
-cd ~/tools
+cd /home/nick/tools
+
+echo "[+] Install light"
+cd /tmp
+git clone https://github.com/haikarainen/light.git
+cd light
+./autogen.sh
+./configure && make
+make install
+cd /home/nick/tools
