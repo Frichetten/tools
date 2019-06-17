@@ -152,3 +152,27 @@ cd light
 ./configure && make
 make install
 cd /home/nick/tools
+
+echo "[+] Install Termite"
+cd /tmp
+apt install -y build-essential git g++ libgtk-3-dev gtk-doc-tools gnutls-bin valac intltool libpcre2-dev libglib3.0-cil-dev libgnutls28-dev libgirepository1.0-dev libxml2-utils gperf libtool
+git clone https://github.com/thestinger/vte-ng
+cd vte-ng
+./autogen.sh
+make
+make install
+cd /tmp
+git clone --recursive https://github.com/thestinger/termite
+cd /tmp/termite/
+make
+make install
+ldconfig
+mkdir -p /lib/terminfo/x
+ln -s /usr/local/share/terminfo/x/xterm-termite /lib/terminfo/x/xterm-termite
+update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/termite 60
+cd /home/nick/tools
+
+echo "[+] Fixing ownership of /scripts"
+cd /home/nick/
+chown -R nick scripts/
+cd /home/nick/tools
