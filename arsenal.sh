@@ -35,12 +35,6 @@ apt dist-upgrade -y
 echo "[+] Installing i3wm"
 apt install -y i3
 
-echo "[+] Downloading Personal Configs"
-#wget https://github.com/Frichetten/dotfiles/archive/master.zip -O /tmp/dotfiles.zip
-#unzip /tmp/dotfiles.zip -d /tmp
-#cp -r /tmp/dotfiles-master/* ~/.config/
-#rm ~/.config/README.md
-
 echo "[+] Install Polybar"
 apt install -y cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev \
     libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev \
@@ -147,6 +141,12 @@ cd /home/nick/tools
 echo "[+] Install urxvt"
 # xsel and xclip are needed for copy paste
 apt install -y rxvt-unicode xsel xclip
+
+echo "[+] Install htop"
+apt install -y htop
+
+echo "[+] Install kinit"
+apt install -y krb5-user
 
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
