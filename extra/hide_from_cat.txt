@@ -1,0 +1,2 @@
+echo -ne "This is the first part\rThis is the second part" > file.txt
+# This will cause the carriage return to be evaluated when you cat a file
