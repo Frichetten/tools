@@ -3,3 +3,7 @@ nmcli d wifi list
 
 # Connect to network
 nmcli dev wifi connect *ssid* -a
+
+# Disconnect from a network
+nmcli d # Lists the connections
+nmcli con down *connection_name*

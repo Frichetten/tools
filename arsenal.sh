@@ -149,7 +149,7 @@ echo "[+] Install kinit"
 apt install -y krb5-user
 
 echo "[+] Install KVM/QEMU"
-apt install -y qemu-kvm libvirt0 virt-manager bridge-utils
+apt install -y qemu-kvm libvirt0 virt-manager bridge-utils virt-goodies
 
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/

@@ -1,0 +1,22 @@
+# Info take from: http://linux-hacking-guide.blogspot.com/2015/05/convert-vmware-virtual-machine-to-kvm.html
+# Converting a VMWare (vmdk) to KVM
+
+1) qemu-img convert -f vmdk vmware.vmdk -O qcow2 kvm.qcow2
+
+2) chown libvirt-qemu:libvirt-qemu kvm.qcow2
+
+3) setfacl -m u:libvirt-qemu:x /iso-directory
+
+# install virt-goodies to get vmware2libvirt
+4) vmware2libvirt -f vmware.vmx > kvm.xml
+
+5) virsh -c qemu:///system define kvm.xml
+
+6) sudo virsh edit kvm
+	# This is the name of the VM. Find it with 'sudo virsh list --all'
+
+7) Find the directory to the hard drive. Change drive type to qcow2 from raw
+	Change the source file to the new qcow2 file. 
+	Save and exit
+
+8) Open virt-manager (maybe fix networking), and run the new vm
