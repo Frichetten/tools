@@ -1,6 +1,6 @@
 #!/bin/bash
 # Author: Nick Frichette
-# Intended OS: Kali Linux/Debian
+# Intended OS: Kali Linux/Debian/Ubuntu
 # Description: A quick script to install some tools after 
 # the OS has been flashed.
 
@@ -34,6 +34,9 @@ apt dist-upgrade -y
 
 echo "[+] Installing i3wm"
 apt install -y i3
+
+echo "[+] Installing Vim"
+apt install -y vim
 
 echo "[+] Install Polybar"
 apt install -y cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev \
