@@ -1,0 +1,19 @@
+name: test-arsenal
+
+on: [push]
+
+jobs:
+  test-arsenal:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Run arsenal.sh
+      run: |
+        mkdir /home/nick
+        mkdir /home/nick/tools
+        mkdir /home/nick/scripts
+        mv -r * /home/nick/tools
+        cd /home/nick/tools
+        echo "Y Y Y Y Y Y Y Y Y Y Y Y" | ./arsenal.sh
+      env:
+        CI: true
