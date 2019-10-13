@@ -9,6 +9,7 @@ jobs:
     steps:
     - name: Run arsenal.sh
       run: |
+        sudo su
         mkdir /home/nick
         mkdir /home/nick/tools
         mkdir /home/nick/scripts
