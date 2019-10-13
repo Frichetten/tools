@@ -9,10 +9,13 @@ jobs:
     steps:
     - name: Run arsenal.sh
       run: |
+        echo $(whoami)
+        sudo su
+        echo $(whoami)
         sudo mkdir /home/nick
         sudo mkdir /home/nick/tools
         sudo mkdir /home/nick/scripts
-        sudo mv -r * /home/nick/tools
+        sudo mv * /home/nick/tools
         cd /home/nick/tools
         echo "Y Y Y Y Y Y Y Y Y Y Y Y" | sudo ./arsenal.sh
       env:
