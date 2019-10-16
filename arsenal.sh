@@ -157,6 +157,11 @@ apt install -y qemu-kvm libvirt0 virt-manager bridge-utils virt-goodies
 echo "[+] Installing gobuster"
 apt install -y gobuster
 
+echo "[+] Installing wordlists"
+cd /home/nick/scripts
+git clone https://github.com/danielmiessler/SecLists.git
+cd /home/nick/tools
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/
