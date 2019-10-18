@@ -165,6 +165,9 @@ cd /home/nick/tools
 echo "[+] Install net-tools"
 apt install -y net-tools
 
+echo "[+] Install keepassxc"
+apt install -y keepassxc
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/
