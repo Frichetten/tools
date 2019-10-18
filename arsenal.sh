@@ -162,7 +162,18 @@ cd /home/nick/scripts
 git clone https://github.com/danielmiessler/SecLists.git
 cd /home/nick/tools
 
+echo "[+] Install net-tools"
+apt install -y net-tools
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/
 cd /home/nick/tools
+
+##################
+echo "OPTIONALS (POTENTIALLY DANGEROUS)"
+echo "Inspect these packages prior to script execution"
+curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+chmod 755 msfinstall
+./msfinstall
+rm msfinstall
