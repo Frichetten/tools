@@ -168,6 +168,14 @@ apt install -y net-tools
 echo "[+] Install keepassxc"
 apt install -y keepassxc
 
+echo "[+] Install smbclient"
+apt install -y smbclient
+
+echo "[+] Install Linkfinder"
+cd /home/nick/scripts
+git clone https://github.com/GerbenJavado/LinkFinder.git
+cd /home/nick/tools
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/
