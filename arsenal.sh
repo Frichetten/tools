@@ -73,23 +73,23 @@ echo "[-] Remove Terminator"
 # Kali includes terminator by default and I hate it
 apt remove -y terminator
 
-echo "[+] Install i3-gaps"
-apt install -y libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb \
-    libxcb1-dev libxcb-icccm4-dev libyajl-dev libev-dev libxcb-xkb-dev \
-    libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev \
-    libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev \
-    libxcb-xrm0 libxcb-xrm-dev autoconf
-cd /tmp
-git clone https://www.github.com/Airblader/i3 i3-gaps
-cd /tmp/i3-gaps
-autoreconf --force --install
-rm -rf /tmp/i3-gaps/build
-mkdir -p /tmp/i3-gaps/build
-cd /tmp/i3-gaps/build
-../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-make
-make install
-cd /home/nick/tools
+#echo "[+] Install i3-gaps"
+#apt install -y libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb \
+#    libxcb1-dev libxcb-icccm4-dev libyajl-dev libev-dev libxcb-xkb-dev \
+#    libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev \
+#    libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev \
+#    libxcb-xrm0 libxcb-xrm-dev autoconf
+#cd /tmp
+#git clone https://www.github.com/Airblader/i3 i3-gaps
+#cd /tmp/i3-gaps
+#autoreconf --force --install
+#rm -rf /tmp/i3-gaps/build
+#mkdir -p /tmp/i3-gaps/build
+#cd /tmp/i3-gaps/build
+#../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+#make
+#make install
+#cd /home/nick/tools
 
 echo "[+] Install Scrot"
 apt install -y scrot
@@ -175,6 +175,12 @@ echo "[+] Install Linkfinder"
 cd /home/nick/scripts
 git clone https://github.com/GerbenJavado/LinkFinder.git
 cd /home/nick/tools
+
+echo "[+] Install transmission"
+apt install -y transmission
+
+echo "[+] Install yubikey software"
+apt install -y gnupg2 gnupg-agent dirmngr cryptsetup scdaemon pcscd secure-delete hopenpgp-tools yubikey-personalization
 
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
