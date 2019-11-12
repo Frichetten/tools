@@ -94,6 +94,9 @@ apt remove -y terminator
 echo "[+] Install Scrot"
 apt install -y scrot
 
+echo "[+] Install imagemagick"
+apt install -y imagemagick
+
 echo "[+] Install feh"
 apt install -y feh
 
