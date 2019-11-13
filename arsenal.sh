@@ -185,6 +185,13 @@ apt install -y transmission
 echo "[+] Install yubikey software"
 apt install -y gnupg2 gnupg-agent dirmngr cryptsetup scdaemon pcscd secure-delete hopenpgp-tools yubikey-personalization
 
+echo "[+] Install VSCode"
+apt install -y software-properties-common apt-transport-https wget
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add -
+add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+apt update
+apt install -y code
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/
