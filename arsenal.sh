@@ -114,7 +114,7 @@ apt install -y apt-transport-https ca-certificates curl gnupg2 software-properti
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee -a /etc/apt/sources.list.d/docker.list
 apt update
-apt install -y docker-ce
+apt install -y docker-ce docker-compose
 
 echo "[+] Install aws cli"
 pip3 install --upgrade awscli
@@ -191,6 +191,12 @@ wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add -
 add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
 apt update
 apt install -y code
+
+echo "[+] Install ssh (gives you openssh-server)"
+apt install -y ssh
+
+echo "[+] Install Java"
+apt install -y default-jre
 
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
