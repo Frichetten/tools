@@ -117,7 +117,7 @@ apt update
 apt install -y docker-ce docker-compose
 
 echo "[+] Install aws cli"
-pip3 install --upgrade awscli
+apt install -y awscli
 
 echo "[+] Install ScoutSuite"
 pip3 install scoutsuite
