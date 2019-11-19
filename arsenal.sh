@@ -201,6 +201,9 @@ apt install -y default-jre
 echo "[+] Install cmatrix"
 apt install -y cmatrix
 
+echo "[+] Install hashcat"
+apt install -y hashcat
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/
