@@ -198,6 +198,9 @@ apt install -y ssh
 echo "[+] Install Java"
 apt install -y default-jre
 
+echo "[+] Install cmatrix"
+apt install -y cmatrix
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/
