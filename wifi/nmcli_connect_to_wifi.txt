@@ -4,6 +4,11 @@ nmcli d wifi list
 # Connect to network
 nmcli dev wifi connect *ssid* -a
 
+# List current connections
+nmcli d
+
 # Disconnect from a network
-nmcli d # Lists the connections
-nmcli con down *connection_name*
+nmcli con down *ssid*
+
+# Delete a network
+nmcli con delete id *ssid*
