@@ -1,0 +1,15 @@
+<script src="http://code.jquery.com/jquery-3.4.1.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.js"></script>
+<script>
+   (function($) {
+      $(document).ready(function() {
+         $.ajax({
+            type: 'POST',
+            url: '/',
+            data: '{"first":"first", "second":"second"}',
+            contentType: 'application/json',
+            dataType: 'json'
+         })
+      });
+   })(jQuery);
+</script>
