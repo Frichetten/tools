@@ -201,8 +201,11 @@ apt install -y default-jre
 echo "[+] Install cmatrix"
 apt install -y cmatrix
 
+echo "[+] Install nmap"
+apt install -y nmap
+
 echo "[+] Install hashcat"
-apt install -y hashcat
+apt install -y hashcat ocl-icd-opencl-dev
 
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
