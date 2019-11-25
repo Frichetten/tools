@@ -207,6 +207,9 @@ apt install -y nmap
 echo "[+] Install hashcat"
 apt install -y hashcat ocl-icd-opencl-dev
 
+echo "[+] Install sqlmap"
+apt install -y sqlmap
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/
