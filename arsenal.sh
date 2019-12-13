@@ -213,6 +213,12 @@ apt install -y sqlmap
 echo "[+] Install i3lock-fancy"
 apt install -y i3lock-fancy
 
+echo "[+] Install wireshark"
+apt install -y wireshark-qt
+
+echo "[+] Install tmux"
+apt install -y tmux
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/
