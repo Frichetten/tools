@@ -35,6 +35,9 @@ apt dist-upgrade -y
 echo "[+] Installing i3wm"
 apt install -y i3
 
+echo "[+] Installing pip3"
+apt install -y python3-pip
+
 echo "[+] Installing Vim"
 apt install -y vim
 
@@ -218,6 +221,9 @@ apt install -y wireshark-qt
 
 echo "[+] Install tmux"
 apt install -y tmux
+
+echo "[+] Install cartography"
+pip3 install cartography
 
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
