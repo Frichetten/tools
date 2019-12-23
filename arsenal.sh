@@ -225,6 +225,10 @@ apt install -y tmux
 echo "[+] Install cartography"
 pip3 install cartography
 
+echo "[+] Install jython"
+# Needed for some Burp extensions
+apt install -y jython
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/
