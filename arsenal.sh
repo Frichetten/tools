@@ -229,6 +229,11 @@ echo "[+] Install jython"
 # Needed for some Burp extensions
 apt install -y jython
 
+echo "[+] Install Responder"
+cd /home/nick/scripts
+git clone https://github.com/lgandx/Responder.git
+cd /home/nick/tools
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/
