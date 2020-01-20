@@ -234,6 +234,9 @@ cd /home/nick/scripts
 git clone https://github.com/lgandx/Responder.git
 cd /home/nick/tools
 
+echo "[+] Install font awesome"
+apt install -y fonts-font-awesome
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/

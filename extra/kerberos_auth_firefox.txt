@@ -1,0 +1,5 @@
+about:config
+
+network.negotiate-auth.trusted-uris
+
+enter domain and save
