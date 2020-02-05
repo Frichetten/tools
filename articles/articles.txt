@@ -1,0 +1,7 @@
+The following are articles/blog posts I've saved over time. Worth reviewing for things.
+
+# AWS
+https://know.bishopfox.com/research/privilege-escalation-in-aws
+
+# Pentest Profession
+http://coffeetocode.net/2016/09/on-pentesting-professionalism-chill/
