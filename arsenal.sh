@@ -25,12 +25,20 @@ if [ $answer != "Y" ]; then
     echo "[!] Did not answer yes. Exiting."
 fi
 
-# They answered yes so let's install some tools
+echo "[+] Hardening OS"
+echo "################"
+
+echo "Hardening PTRACE scope = 2"
+sed -i '$ d' /etc/sysctl.d/10-ptrace.conf
+echo "kernel.yama.ptrace_scope = 2" >> /etc/sysctl.d/10-ptrace.conf
 
 echo "[+] Updating the OS"
 apt update
 apt upgrade -y
 apt dist-upgrade -y
+
+echo "[+] Installing Tools"
+echo "####################"
 
 echo "[+] Installing i3wm"
 apt install -y i3
@@ -151,6 +159,10 @@ echo "[+] Install urxvt"
 # xsel and xclip are needed for copy paste
 apt install -y rxvt-unicode xsel xclip
 
+echo "[+] Install xdotool"
+# needed for i3 config
+apt install -y xdotool
+
 echo "[+] Install htop"
 apt install -y htop
 
@@ -240,9 +252,20 @@ apt install -y fonts-font-awesome
 echo "[+] Install nodejs"
 apt install -y nodejs
 
+echo "[+] Install virtualbox"
+apt install -y virtualbox
+
+echo "[+] Install pavucontrol"
+apt install -y pavucontrol
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/
+cd /home/nick/tools
+
+echo "[+] Download the latest Kali linux hopefully"
+cd /home/nick/Downloads
+curl https://cdimage.kali.org/current/ -s | grep installer-amd64.iso | cut -d "=" -f 5 | cut -d ">" -f 1 | sed 's/\"//g' | { read url; wget https://cdimage.kali.org/current/$url; }
 cd /home/nick/tools
 
 ##################
