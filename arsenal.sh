@@ -258,6 +258,9 @@ apt install -y virtualbox
 echo "[+] Install pavucontrol"
 apt install -y pavucontrol
 
+echo "[+] Install updog"
+pip3 install updog
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/

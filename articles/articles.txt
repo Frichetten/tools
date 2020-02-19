@@ -3,5 +3,7 @@ The following are articles/blog posts I've saved over time. Worth reviewing for 
 # AWS
 https://know.bishopfox.com/research/privilege-escalation-in-aws
 
+https://disruptops.com/how-to-make-the-most-out-of-aws-guardduty/
+
 # Pentest Profession
 http://coffeetocode.net/2016/09/on-pentesting-professionalism-chill/
