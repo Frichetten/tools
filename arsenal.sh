@@ -169,8 +169,8 @@ apt install -y htop
 echo "[+] Install kinit"
 apt install -y krb5-user
 
-#echo "[+] Install KVM/QEMU"
-#apt install -y qemu-kvm libvirt0 virt-manager bridge-utils virt-goodies
+echo "[+] Install KVM/QEMU"
+apt install -y qemu-kvm libvirt0 virt-manager bridge-utils virt-goodies
 
 echo "[+] Installing gobuster"
 apt install -y gobuster
@@ -252,8 +252,8 @@ apt install -y fonts-font-awesome
 echo "[+] Install nodejs"
 apt install -y nodejs
 
-echo "[+] Install virtualbox"
-apt install -y virtualbox
+#echo "[+] Install virtualbox"
+#apt install -y virtualbox
 
 echo "[+] Install pavucontrol"
 apt install -y pavucontrol
