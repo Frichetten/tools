@@ -261,6 +261,12 @@ apt install -y pavucontrol
 echo "[+] Install updog"
 pip3 install updog
 
+echo "[+] Install Chrome"
+cd /tmp
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+apt install ./google-chrome-stable_current_amd64.deb
+cd /home/nick/tools
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/
@@ -278,3 +284,9 @@ curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/t
 chmod 755 msfinstall
 ./msfinstall
 rm msfinstall
+
+echo "\n"
+echo "#############################"
+echo "Install Complete!"
+echo "Dont forget the following:"
+echo "(1) SwitchyOmega Chrome Extension"
