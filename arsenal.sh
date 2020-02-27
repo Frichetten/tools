@@ -49,18 +49,6 @@ apt install -y python3-pip
 echo "[+] Installing Vim"
 apt install -y vim
 
-echo "[+] Install Polybar"
-apt install -y cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev \
-    libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev \
-    libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev i3-wm \
-    libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev \
-    libxcb-composite0-dev
-git clone https://github.com/jaagr/polybar.git
-mv polybar/ /tmp/
-cd /tmp/polybar
-./build.sh
-cd /home/nick/tools
-
 echo "[+] Install PyWal"
 pip3 install --user pywal
 echo 'PATH="${PATH}:${HOME}/.local/bin"' >> /home/nick/.bashrc
@@ -166,9 +154,6 @@ apt install -y xdotool
 echo "[+] Install htop"
 apt install -y htop
 
-echo "[+] Install kinit"
-apt install -y krb5-user
-
 echo "[+] Install KVM/QEMU"
 apt install -y qemu-kvm libvirt0 virt-manager bridge-utils virt-goodies
 
@@ -228,9 +213,6 @@ apt install -y sqlmap
 echo "[+] Install i3lock-fancy"
 apt install -y i3lock-fancy
 
-echo "[+] Install wireshark"
-apt install -y wireshark-qt
-
 echo "[+] Install tmux"
 apt install -y tmux
 
@@ -279,11 +261,33 @@ cd /home/nick/tools
 
 ##################
 echo "OPTIONALS (POTENTIALLY DANGEROUS)"
+
 echo "Inspect these packages prior to script execution"
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
 chmod 755 msfinstall
 ./msfinstall
 rm msfinstall
+
+##################
+echo "REQUIRES INTERACTION"
+
+echo "[+] Install Polybar"
+apt install -y cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev \
+    libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev \
+    libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev i3-wm \
+    libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev \
+    libxcb-composite0-dev libjsoncpp-dev
+git clone https://github.com/jaagr/polybar.git
+mv polybar/ /tmp/
+cd /tmp/polybar
+./build.sh
+cd /home/nick/tools
+
+echo "[+] Install wireshark"
+apt install -y wireshark-qt
+
+echo "[+] Install kinit"
+apt install -y krb5-user
 
 echo "\n"
 echo "#############################"
