@@ -249,6 +249,9 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 apt install ./google-chrome-stable_current_amd64.deb
 cd /home/nick/tools
 
+echo "[+] Install lxappearance"
+apt install -y lxappearance
+
 echo "[+] Fixing ownership of /scripts"
 cd /home/nick/
 chown -R nick scripts/
@@ -294,3 +297,4 @@ echo "#############################"
 echo "Install Complete!"
 echo "Dont forget the following:"
 echo "(1) SwitchyOmega Chrome Extension"
+echo "(2) Setup dark mode with lxappearance"
