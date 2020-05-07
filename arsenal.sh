@@ -249,24 +249,37 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 apt install ./google-chrome-stable_current_amd64.deb
 cd /home/nick/tools
 
-echo "[+] Fixing ownership of /scripts"
-cd /home/nick/
-chown -R nick scripts/
-cd /home/nick/tools
-
 echo "[+] Download the latest Kali linux hopefully"
 cd /home/nick/Downloads
 curl https://cdimage.kali.org/current/ -s | grep installer-amd64.iso | cut -d "=" -f 5 | cut -d ">" -f 1 | sed 's/\"//g' | { read url; wget https://cdimage.kali.org/current/$url; }
 cd /home/nick/tools
 
-##################
-echo "OPTIONALS (POTENTIALLY DANGEROUS)"
-
-echo "Inspect these packages prior to script execution"
+echo "[+] Install Metasploit"
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
 chmod 755 msfinstall
 ./msfinstall
 rm msfinstall
+
+echo "[+] Install socat"
+apt install -y socat
+
+echo "[+] Install chromium"
+apt install -y chromium-browser
+
+echo "[+] Install aquatone"
+cd /tmp
+wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
+unzip aquatone_linux_amd64_1.7.0.zip
+mv /tmp/aquatone /usr/local/bin
+cd /home/nick/tools
+
+echo "[+] Install smbmap"
+cd /home/nick/scripts
+git clone https://github.com/ShawnDEvans/smbmap.git
+cd /home/nick/tools
+
+echo "[+] Install hashid"
+pip3 install hashid
 
 ##################
 echo "REQUIRES INTERACTION"
@@ -288,6 +301,11 @@ apt install -y wireshark-qt
 
 echo "[+] Install kinit"
 apt install -y krb5-user
+
+echo "[+] Fixing ownership of /scripts"
+cd /home/nick/
+chown -R nick scripts/
+cd /home/nick/tools
 
 echo "\n"
 echo "#############################"
