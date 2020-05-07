@@ -249,6 +249,9 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 apt install ./google-chrome-stable_current_amd64.deb
 cd /home/nick/tools
 
+echo "[+] Install lxappearance"
+apt install -y lxappearance
+
 echo "[+] Download the latest Kali linux hopefully"
 cd /home/nick/Downloads
 curl https://cdimage.kali.org/current/ -s | grep installer-amd64.iso | cut -d "=" -f 5 | cut -d ">" -f 1 | sed 's/\"//g' | { read url; wget https://cdimage.kali.org/current/$url; }
@@ -312,3 +315,4 @@ echo "#############################"
 echo "Install Complete!"
 echo "Dont forget the following:"
 echo "(1) SwitchyOmega Chrome Extension"
+echo "(2) Setup dark mode with lxappearance"
