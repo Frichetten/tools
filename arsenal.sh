@@ -284,6 +284,9 @@ cd /home/nick/tools
 echo "[+] Install hashid"
 pip3 install hashid
 
+echo "[+] Install rdesktop"
+apt install -y rdesktop
+
 ##################
 echo "REQUIRES INTERACTION"
 
