@@ -1,0 +1,2 @@
+# Penetration Testing is Breadth First Searching
+# Red Teaming is Depth First Searching
