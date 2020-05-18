@@ -287,6 +287,9 @@ pip3 install hashid
 echo "[+] Install rdesktop"
 apt install -y rdesktop
 
+echo "[+] Install dbeaver"
+snap install dbeaver-ce
+
 ##################
 echo "REQUIRES INTERACTION"
 
