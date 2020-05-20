@@ -288,7 +288,12 @@ echo "[+] Install rdesktop"
 apt install -y rdesktop
 
 echo "[+] Install dbeaver"
-snap install dbeaver-ce
+snap install -y dbeaver-ce
+
+echo "[+] Install resolvconf"
+apt install -y resolvconf
+mv /etc/resolv.conf /etc/resolv.conf.orig
+ln -s /run/resolvconf/resolv.conf /etc/resolv.conf
 
 ##################
 echo "REQUIRES INTERACTION"
