@@ -28,9 +28,9 @@ fi
 echo "[+] Hardening OS"
 echo "################"
 
-echo "Hardening PTRACE scope = 2"
+echo "Hardening PTRACE scope = 3"
 sed -i '$ d' /etc/sysctl.d/10-ptrace.conf
-echo "kernel.yama.ptrace_scope = 2" >> /etc/sysctl.d/10-ptrace.conf
+echo "kernel.yama.ptrace_scope = 3" >> /etc/sysctl.d/10-ptrace.conf
 
 echo "[+] Updating the OS"
 apt update
