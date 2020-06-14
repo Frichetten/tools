@@ -8,8 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v1
     - name: Install Arsenal
       run: |
-        ls
-        pwd
-        ./arsenal.sh container
+        sudo ./arsenal.sh container
