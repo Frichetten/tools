@@ -10,4 +10,5 @@ jobs:
     steps:
     - name: Install Arsenal
       run: |
+        ls
         ./arsenal.sh container
