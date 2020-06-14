@@ -1,15 +1,13 @@
 
 name: test-arsenal
 
-on:
-  release:
-    types: [created]
+on: [push]
 
 jobs:
-  deploy:
-
+  test-arsenal:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install Arsenal
-        run: ./arsenal.sh container
+    - name: Install Arsenal
+      run: |
+        ./arsenal.sh container
