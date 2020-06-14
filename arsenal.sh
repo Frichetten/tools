@@ -17,6 +17,15 @@ if [ $EUID != 0 ]; then
     exit 1
 fi 
 
+# Check home directory
+if [ "$SUDO_USER" == "root" ]; then
+    HOME_DIR="/root"
+elif [ "$SUDO_USER" == "" ]; then
+    HOME_DIR="/root"
+else
+    HOME_DIR="/home/$SUDO_USER"
+fi
+
 # Param check
 if ([ "$#" != 1 ]) || ([ $1 != "host" ] && [ $1 != "container" ]); then
     echo "[!] Usage: sudo ./arsenal.sh (host || container)"
@@ -81,7 +90,7 @@ if [ $1 == 'host' ]; then
     ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
     make
     make install
-    cd /home/nick/tools
+    cd $HOME_DIR/tools
 
     echo "[+] Install Scrot"
     apt install -y scrot
@@ -115,7 +124,7 @@ if [ $1 == 'host' ]; then
     ./autogen.sh
     ./configure && make
     make install
-    cd /home/nick/tools
+    cd $HOME_DIR/tools
 
     echo "[+] Install urxvt"
     # xsel and xclip are needed for copy paste
@@ -131,42 +140,45 @@ if [ $1 == 'host' ]; then
     echo "[+] Install keepassxc"
     apt install -y keepassxc
 
-	echo "[+] Install transmission"
-	apt install -y transmission
+    echo "[+] Install transmission"
+    apt install -y transmission
 
-	echo "[+] Install yubikey software"
-	apt install -y gnupg2 gnupg-agent dirmngr cryptsetup scdaemon pcscd secure-delete hopenpgp-tools yubikey-personalization
+    echo "[+] Install yubikey software"
+    apt install -y gnupg2 gnupg-agent dirmngr cryptsetup scdaemon pcscd secure-delete hopenpgp-tools yubikey-personalization
 
-	echo "[+] Install VSCode"
-	apt install -y software-properties-common apt-transport-https wget
-	wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add -
-	add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-	apt update
-	apt install -y code
+    echo "[+] Install VSCode"
+    apt install -y software-properties-common apt-transport-https wget
+    wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add -
+    add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+    apt update
+    apt install -y code
 
-	echo "[+] Install i3lock-fancy"
-	apt install -y i3lock-fancy
+    echo "[+] Install i3lock-fancy"
+    apt install -y i3lock-fancy
 
-	echo "[+] Install pavucontrol"
-	apt install -y pavucontrol
+    echo "[+] Install pavucontrol"
+    apt install -y pavucontrol
 
-	echo "[+] Install lxappearance"
-	apt install -y lxappearance
+    echo "[+] Install lxappearance"
+    apt install -y lxappearance
 
-	echo "[+] Download the latest Kali linux hopefully"
-	cd /home/nick/Downloads
-	curl https://cdimage.kali.org/current/ -s | grep installer-amd64.iso | cut -d "=" -f 5 | cut -d ">" -f 1 | sed 's/\"//g' | { read url; wget https://cdimage.kali.org/current/$url; }
-	cd /home/nick/tools
+    echo "[+] Download the latest Kali linux hopefully"
+    cd $HOME_DIR/Downloads
+    curl https://cdimage.kali.org/current/ -s | grep installer-amd64.iso | cut -d "=" -f 5 | cut -d ">" -f 1 | sed 's/\"//g' | { read url; wget https://cdimage.kali.org/current/$url; }
+    cd $HOME_DIR/tools
 
-	echo "[+] Install rdesktop"
-	apt install -y rdesktop
+    echo "[+] Install rdesktop"
+    apt install -y rdesktop
 
-	echo "[+] Install dbeaver"
-	snap install -y dbeaver-ce
+    echo "[+] Install dbeaver"
+    snap install -y dbeaver-ce
 fi
 
 echo "[+] Installing Non-Host Tools"
 echo "#############################"
+if [ "$1" == "container" ]; then
+    export DEBIAN_FRONTEND=noninteractive
+fi
 
 echo "[+] Installing pip3"
 apt install -y python3-pip
@@ -181,23 +193,24 @@ echo "[+] Install Neofetch"
 apt install -y neofetch
 
 echo "[+] Install aws cli"
+apt install -y tzdata
 apt install -y awscli
 
 echo "[+] Install ScoutSuite"
 pip3 install scoutsuite
 
 echo "[+] Install dirsearch"
-mkdir /home/nick/scripts
-cd /home/nick/scripts
+mkdir $HOME_DIR/scripts
+cd $HOME_DIR/scripts
 git clone https://github.com/maurosoria/dirsearch.git
-cd /home/nick/tools
+cd $HOME_DIR/tools
 
 echo "[+] Install pacu"
-cd /home/nick/scripts
+cd $HOME_DIR/scripts
 git clone https://github.com/RhinoSecurityLabs/pacu.git
-cd /home/nick/scripts/pacu
+cd $HOME_DIR/scripts/pacu
 bash install.sh
-cd /home/nick/tools
+cd $HOME_DIR/tools
 
 echo "[+] Install htop"
 apt install -y htop
@@ -206,9 +219,9 @@ echo "[+] Installing gobuster"
 apt install -y gobuster
 
 echo "[+] Installing wordlists"
-cd /home/nick/scripts
+cd $HOME_DIR/scripts
 git clone https://github.com/danielmiessler/SecLists.git
-cd /home/nick/tools
+cd $HOME_DIR/tools
 
 echo "[+] Install net-tools"
 apt install -y net-tools
@@ -217,9 +230,9 @@ echo "[+] Install smbclient"
 apt install -y smbclient
 
 echo "[+] Install Linkfinder"
-cd /home/nick/scripts
+cd $HOME_DIR/scripts
 git clone https://github.com/GerbenJavado/LinkFinder.git
-cd /home/nick/tools
+cd $HOME_DIR/tools
 
 echo "[+] Install ssh (gives you openssh-server)"
 apt install -y ssh
@@ -247,9 +260,9 @@ echo "[+] Install jython"
 apt install -y jython
 
 echo "[+] Install Responder"
-cd /home/nick/scripts
+cd $HOME_DIR/scripts
 git clone https://github.com/lgandx/Responder.git
-cd /home/nick/tools
+cd $HOME_DIR/tools
 
 echo "[+] Install font awesome"
 apt install -y fonts-font-awesome
@@ -263,8 +276,8 @@ pip3 install updog
 echo "[+] Install Chrome"
 cd /tmp
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-apt install ./google-chrome-stable_current_amd64.deb
-cd /home/nick/tools
+apt install -y ./google-chrome-stable_current_amd64.deb
+cd $HOME_DIR/tools
 
 echo "[+] Install Metasploit"
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
@@ -283,12 +296,12 @@ cd /tmp
 wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
 unzip aquatone_linux_amd64_1.7.0.zip
 mv /tmp/aquatone /usr/local/bin
-cd /home/nick/tools
+cd $HOME_DIR/tools
 
 echo "[+] Install smbmap"
-cd /home/nick/scripts
+cd $HOME_DIR/scripts
 git clone https://github.com/ShawnDEvans/smbmap.git
-cd /home/nick/tools
+cd $HOME_DIR/tools
 
 echo "[+] Install hashid"
 pip3 install hashid
@@ -302,29 +315,29 @@ ln -s /run/resolvconf/resolv.conf /etc/resolv.conf
 echo "REQUIRES INTERACTION"
 
 if [ $1 == 'host' ]; then
-	echo "[+] Install Polybar"
-	apt install -y cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev \
-		libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev \
-		libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev i3-wm \
-		libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev \
-		libxcb-composite0-dev libjsoncpp-dev
-	git clone https://github.com/jaagr/polybar.git
-	mv polybar/ /tmp/
-	cd /tmp/polybar
-	./build.sh
-	cd /home/nick/tools
+    echo "[+] Install Polybar"
+    apt install -y cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev \
+	    libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev \
+	    libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev i3-wm \
+	    libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev \
+	    libxcb-composite0-dev libjsoncpp-dev
+    git clone https://github.com/jaagr/polybar.git
+    mv polybar/ /tmp/
+    cd /tmp/polybar
+    ./build.sh
+    cd $HOME_DIR/tools
 
-	echo "[+] Install wireshark"
-	apt install -y wireshark-qt
+    echo "[+] Install wireshark"
+    apt install -y wireshark-qt
 fi
 
 echo "[+] Install kinit"
-apt install -y --force-yes krb5-user
+apt install -y krb5-user
 
 echo "[+] Fixing ownership of /scripts"
-cd /home/nick/
-chown -R nick scripts/
-cd /home/nick/tools
+cd $HOME_DIR
+chown -R $SUDO_USER scripts/
+cd $HOME_DIR/tools
 
 echo "\n"
 echo "#############################"
