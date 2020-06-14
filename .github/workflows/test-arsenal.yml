@@ -11,4 +11,5 @@ jobs:
     - name: Install Arsenal
       run: |
         ls
+        pwd
         ./arsenal.sh container
