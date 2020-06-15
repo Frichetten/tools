@@ -136,7 +136,7 @@ if [ $1 == 'host' ]; then
     apt install -y xdotool
 
     echo "[+] Install KVM/QEMU"
-    apt install -y qemu-kvm libvirt0 virt-manager bridge-utils virt-goodies
+    apt install -y qemu-kvm libvirt0 virt-manager bridge-utils
 
     echo "[+] Install keepassxc"
     apt install -y keepassxc
