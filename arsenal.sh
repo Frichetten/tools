@@ -312,6 +312,9 @@ apt install -y resolvconf
 mv /etc/resolv.conf /etc/resolv.conf.orig
 ln -s /run/resolvconf/resolv.conf /etc/resolv.conf
 
+echo "[+] Install jq"
+apt install -y jq
+
 ##################
 echo "REQUIRES INTERACTION"
 
