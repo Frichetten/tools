@@ -173,6 +173,9 @@ if [ $1 == 'host' ]; then
 
     echo "[+] Install dbeaver"
     snap install -y dbeaver-ce
+
+    echo "[+] Install masscan"
+    apt install -y masscan
 fi
 
 echo "[+] Installing Non-Host Tools"
