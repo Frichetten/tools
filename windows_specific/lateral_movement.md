@@ -1,0 +1,4 @@
+# Lateral Movement
+
+* SMB
+* WinRM
